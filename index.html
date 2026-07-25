@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Capture - Face, Hands & Body</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #e94560;
+        }
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        video {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 10px;
+            border: 2px solid #e94560;
+        }
+        button {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #c73e54;
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .data-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .data-card {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #0f3460;
+        }
+        .data-card h3 {
+            color: #e94560;
+            margin-top: 0;
+        }
+        .data-content {
+            background: #0f3460;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Motion Capture System</h1>
+        <p style="text-align: center;">Face (468) • Body (33) • Hands (21 each)</p>
+        
+        <div class="video-container">
+            <video id="video" autoplay playsinline></video>
+            <br>
+            <button onclick="startCapture()">Start Capture</button>
+            <button onclick="stopCapture()" disabled>Stop Capture</button>
+        </div>
+        
+        <div class="data-panel">
+            <div class="data-card">
+                <h3>Face Landmarks</h3>
+                <div class="data-content" id="faceData">Waiting...</div>
+            </div>
+            <div class="data-card">
+                <h3>Body Pose</h3>
+                <div class="data-content" id="poseData">Waiting...</div>
+            </div>
+            <div class="data-card">
+                <h3>Hands</h3>
+                <div class="data-content" id="handsData">Waiting...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/capture.js"></script>
+</body>
+</html>
